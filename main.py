@@ -1,18 +1,16 @@
 import datetime
-import json
 
 import Guardian
+from Day import Day
 
 from General import Functions
 
 
 def get_day_list(article_folder_path):
-
+    day_list = []
     for json_path in Functions.get_path_list_from_directory(article_folder_path):
-        print(json_path)
-        # with open(json_path) as json_file:
-        #     data = json.load(json_file)
-        #     print(data[:100])
+        day_list.append(Day(json_path))
+    return day_list
 
 
 def main():
@@ -28,6 +26,8 @@ def main():
         )
 
     day_list = get_day_list(article_folder_path=article_folder_path)
+    for day in day_list:
+        print(day)
 
 
 main()
