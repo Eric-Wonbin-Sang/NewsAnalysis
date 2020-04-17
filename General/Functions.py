@@ -4,6 +4,10 @@ import os
 from General import Constants
 
 
+def tab_str(data_str):
+    return "\t" + data_str.replace("\n", "\n\t")
+
+
 def get_curr_parent_dir(path_addition=None):
     return os.path.dirname(os.getcwd()) + path_addition if path_addition is not None else ""
 
