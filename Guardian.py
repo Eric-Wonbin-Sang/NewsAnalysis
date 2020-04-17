@@ -50,7 +50,7 @@ def download_articles_to_path(folder_path, start_date, end_date):
                 current_page = 1
                 total_pages = 1
                 while current_page <= total_pages:
-                    print("\t\tpage", current_page)
+                    print("\tpage", current_page)
                     api_params['page'] = current_page
                     resp = requests.get(api_endpoint, api_params)
                     data = resp.json()
