@@ -9,13 +9,10 @@ from General import Functions
 def get_day_list(article_folder_path):
 
     for json_path in Functions.get_path_list_from_directory(article_folder_path):
-        with open(json_path) as json_file:
-            data = json.load(json_file)
-            for p in data['people']:
-                print('Name: ' + p['name'])
-                print('Website: ' + p['website'])
-                print('From: ' + p['from'])
-                print('')
+        print(json_path)
+        # with open(json_path) as json_file:
+        #     data = json.load(json_file)
+        #     print(data[:100])
 
 
 def main():
