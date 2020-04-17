@@ -3,14 +3,11 @@ import requests
 import json
 import datetime
 
-def get_curr_parent_dir(path_addition=None):
-    return os.path.dirname(os.getcwd()) + path_addition if path_addition is not None else ""
+from General import Constants
+
 
 ARTICLES_DIR = os.path.join('Day JSON Folder')
 os.makedirs(ARTICLES_DIR, exist_ok=True)
-
-guardian_api_key_path = get_curr_parent_dir("\\API Keys\\Guardian API Key.txt")
-MY_API_KEY = open(guardian_api_key_path).read().strip()
 
 API_ENDPOINT = 'http://content.guardianapis.com/search'
 api_params = {
@@ -19,7 +16,7 @@ api_params = {
     'order-by': "newest",
     'show-fields': 'all',
     'page-size': 200,
-    'api-key': MY_API_KEY
+    'api-key': Constants.guardian_api_key_path
 }
 
 start_date = datetime.date(2019, 10, 1)
