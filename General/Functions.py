@@ -1,9 +1,6 @@
 import os
 
 
-from General import Constants
-
-
 def tab_str(data_str):
     return "\t" + data_str.replace("\n", "\n\t")
 
