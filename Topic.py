@@ -3,13 +3,15 @@ from General import Functions
 
 class Topic:
 
-    def __init__(self, name, keyword_list):
+    def __init__(self, name, keyword_list, graph_color):
 
         self.name = name
         self.keyword_list = keyword_list
         self.day_freq_dict = {}
         self.article_list = []
         self.article_count = 0
+
+        self.graph_color = graph_color
 
     def update_day_freq_dict(self, day_list):
         for day in day_list:

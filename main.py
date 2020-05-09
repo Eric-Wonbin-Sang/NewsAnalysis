@@ -1,4 +1,5 @@
 import datetime
+import matplotlib.pyplot
 
 import Guardian
 from Day import Day
@@ -16,16 +17,40 @@ def get_day_list(article_folder_path):
 
 def get_topic_list():
     return [
-        Topic(name="tech", keyword_list=["apple", "iphone", "android", "phone"]),
-        # Topic(name="", keyword_list=[]),
-        # Topic(name="", keyword_list=[]),
-        # Topic(name="", keyword_list=[]),
-        # Topic(name="", keyword_list=[]),
-        # Topic(name="", keyword_list=[]),
-        # Topic(name="", keyword_list=[]),
-        # Topic(name="", keyword_list=[]),
-        # Topic(name="", keyword_list=[]),
-        Topic(name="covid-19", keyword_list=["covid-19", "coronavirus", "virus", "pandemic"])
+        Topic(
+            name="Coronavirus",
+            keyword_list=["covid-19", "covid91", "covid", "coronavirus", "virus", "pandemic"],
+            graph_color="#ff0000"
+        ),
+        Topic(
+            name="Tech",
+            keyword_list=["apple", "iphone", "android", "phone", "tech", "technology", "laptop", "computer"],
+            graph_color="#3269a8"
+        ),
+        Topic(
+            name="Finance",
+            keyword_list=["bank", "finance", "financial", "earnings", "stock", "performance", "dividends",
+                          "shareholders"],
+            graph_color="#1fcc21"
+        ),
+        Topic(
+            name="Politics",
+            keyword_list=["election", "president", "politics", "trump", "bernie", "biden", "congress", "votes",
+                          "voting", "voters", "ballet", "democrat", "republican", "democratic", "conservative"],
+            graph_color="#f08f18"
+        ),
+        Topic(
+            name="Entertainment",
+            keyword_list=["streaming", "entertainment", "stream", "netflix", "hulu", "disney+", "disney", "movie",
+                          "movies", "youtube", "theater"],
+            graph_color="#f018a1"
+        ),
+        Topic(
+            name="Sports",
+            keyword_list=["football", "basketball", "soccer", "coach", "sports", "season", "sport", "playoff",
+                          "playoffs", "fans"],
+            graph_color="#f018a1"
+        )
     ]
 
 
@@ -56,6 +81,22 @@ def main():
 
     for topic in topic_list:
         print(topic)
+
+    for topic in topic_list:
+        x = [day_key.date for day_key in topic.day_freq_dict]   # X-axis: dates
+        y = [topic.day_freq_dict[day_key] for day_key in topic.day_freq_dict]   # Y-axis: freq
+
+        matplotlib.pyplot.plot(
+            x, y,
+            # marker='o', markerfacecolor='blue', markersize=12,
+            color=topic.graph_color,
+            # linewidth=4, linestyle='dashed',
+            label=topic.name
+        )
+
+    matplotlib.pyplot.gcf().autofmt_xdate()
+    matplotlib.pyplot.legend()
+    matplotlib.pyplot.show()
 
 
 main()
